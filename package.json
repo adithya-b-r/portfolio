@@ -13,6 +13,7 @@
     "@react-three/drei": "^10.1.2",
     "@react-three/fiber": "^9.1.2",
     "@tailwindcss/vite": "^4.1.8",
+    "autoprefixer": "^10.4.21",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.8",

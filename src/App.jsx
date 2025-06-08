@@ -1,8 +1,10 @@
+import { Navbar } from "./Components/Navbar";
+
 const App = () => {
   return (
-    <>
-      <h1></h1>
-    </>
+    <main className="max-w-7xl mx-auto">
+      <Navbar />
+    </main>
   )
 }
 
