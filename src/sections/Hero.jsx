@@ -3,56 +3,64 @@ import { Canvas } from "@react-three/fiber"
 import HackerRoom from "../Components/HackerRoom"
 import { Suspense } from "react"
 import { CanvasLoader } from "../Components/CanvasLoader"
-import { Leva, useControls } from "leva"
+// import { Leva, useControls } from "leva"
 import { useMediaQuery } from "react-responsive"
 
-export const Hero = () => {
-  const x = useControls('HackerRoom',
-    {
-      positionX: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      },
-      positionY: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      },
-      positionZ: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      },
-      rotationX: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      },
-      rotationY: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      },
-      rotationZ: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      },
-      positionZ: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      },
-      scale: {
-        value: 2.5,
-        min: -10,
-        max: 10
-      }
-    }
-  )
+import { calculateSizes } from "../constants/index"
+import { Target } from "../Components/Target"
+import { ReactLogo } from "../Components/ReactLogo"
 
+export const Hero = () => {
+  // const controls = useControls('HackerRoom',
+  //   {
+  //     positionX: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     },
+  //     positionY: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     },
+  //     positionZ: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     },
+  //     rotationX: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     },
+  //     rotationY: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     },
+  //     rotationZ: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     },
+  //     positionZ: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     },
+  //     scale: {
+  //       value: 2.5,
+  //       min: -10,
+  //       max: 10
+  //     }
+  //   }
+  // )
+
+  const isSmall = useMediaQuery({ maxWidth: 440 })
   const isMobile = useMediaQuery({ maxWidth: 768 })
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 })
+
+  const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
   return (
     <section className="min-h-screen w-full flex flex-col relative">
@@ -67,20 +75,29 @@ export const Hero = () => {
       </div>
 
       <div className="w-full h-full absolute inset-0">
-        <Leva controls />
+        {/*<Leva controls />*/}
         <Canvas className="w-full h-full">
           <Suspense fallback={<CanvasLoader />}>
-            <PerspectiveCamera makeDefault position={[0, 0, 30]} />
+            <PerspectiveCamera makeDefault position={[0, 0, 20]} />
+
             <HackerRoom
               // position={[0, 0, 0]}
               // rotation={[0, 280, 0]}
               // scale={0.05}
-              position={[2, -8, 2]}
-              rotation={[0, -Math.PI, 0]}
+              // position={[2, -8, 2]}
+              // rotation={[0, -Math.PI, 0]}
               // scale={[0.1, 0.1, 0.1]}
-              scale={isMobile ? 0.07 : 0.1}
+              // scale={isMobile ? 0.07 : 0.1}
+
+              position={sizes.deskPosition}
+              scale={sizes.deskScale}
+              rotation={[0, -Math.PI, 0]}
             />
 
+            <group>
+              <Target position={sizes.targetPosition} />
+              <ReactLogo position={sizes.reactLogoPosition} />
+            </group>
 
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
