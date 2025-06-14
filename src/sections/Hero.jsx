@@ -9,6 +9,8 @@ import { useMediaQuery } from "react-responsive"
 import { calculateSizes } from "../constants/index"
 import { Target } from "../Components/Target"
 import ReactLogo from "../Components/ReactLogo"
+import Rings from "../Components/Rings"
+import Cube from "../Components/Cube"
 
 export const Hero = () => {
   // const controls = useControls('HackerRoom',
@@ -97,6 +99,8 @@ export const Hero = () => {
             <group>
               <Target position={sizes.targetPosition} />
               <ReactLogo position={sizes.reactLogoPosition} />
+              <Cube position={sizes.cubePosition}/>
+              <Rings position={sizes.ringPosition} />
             </group>
 
             <ambientLight intensity={1} />
