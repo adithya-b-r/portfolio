@@ -8,7 +8,7 @@ import { useMediaQuery } from "react-responsive"
 
 import { calculateSizes } from "../constants/index"
 import { Target } from "../Components/Target"
-import { ReactLogo } from "../Components/ReactLogo"
+import ReactLogo from "../Components/ReactLogo"
 
 export const Hero = () => {
   // const controls = useControls('HackerRoom',
@@ -69,7 +69,7 @@ export const Hero = () => {
           Hey, I am Adithya B R<span className="waving-hand">👋</span>
         </p>
 
-        <p className="text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal text-gray_gradient text-white">
+        <p className=" text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal text-gray_gradient text-white">
           Building Products & Brands
         </p>
       </div>
