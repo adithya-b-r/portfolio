@@ -6,7 +6,7 @@ const NavItems = () => {
   return (
     <ul className="flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20">
       {navLinks.map(({ id, name, href }) => (
-        <li key={id} className="text-neutral-400 hover:text-white max-sm:hover:bg-[#3A3A49] max-sm:w-full max-sm:rounded-md max-sm:px-5 py-2 ">
+        <li key={id} className="text-neutral-400 hover:text-white max-sm:focus:text-white max-sm:hover:bg-[#3A3A49] max-sm:focus:bg-[#3A3A49] max-sm:w-full max-sm:rounded-md max-sm:px-5 py-2 ">
           <a href={href}
             className="text-lg md:text-base hover:text-white transition-colors"
             onClick={() => { }}>
