@@ -12,6 +12,7 @@ import ReactLogo from "../Components/ReactLogo"
 import Rings from "../Components/Rings"
 import Cube from "../Components/Cube"
 import { HeroCamera } from "../Components/HeroCamera"
+import { Button } from "../Components/Button"
 
 export const Hero = () => {
   // const controls = useControls('HackerRoom',
@@ -67,8 +68,8 @@ export const Hero = () => {
 
   return (
     <section className="min-h-screen w-full flex flex-col relative">
-      <div className="w-full mx-auto flex flex-col sm:mt-36 mt-20 gap-3">
-        <p className="sm:text-3xl text-2xl font-semibold text-white text-center">
+      <div className="w-full mx-auto flex flex-col sm:mt-30 mt-20 gap-3">
+        <p className="sm:text-3xl text-2xl font-semibold text-center text-gray-300">
           Hey, I am Adithya B R<span className="waving-hand">👋</span>
         </p>
 
@@ -99,17 +100,23 @@ export const Hero = () => {
               />
             </HeroCamera>
 
-            <group>
-              <Target position={sizes.targetPosition} />
+            <group> {/*renderOrder={100}*/}
               <ReactLogo position={sizes.reactLogoPosition} />
               <Cube position={sizes.cubePosition} />
               <Rings position={sizes.ringPosition} />
+              <Target position={sizes.targetPosition} />
             </group>
 
             <ambientLight intensity={1} />
             <directionalLight position={[10, 10, 10]} intensity={0.5} />
           </Suspense>
         </Canvas>
+      </div>
+
+      <div className="absolute bottom-7 left-0 right-0 w-full z-10 sm:px-10 px-5">
+        <a href="#contact" className="w-fit">
+          <Button name="Let's work together" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
+        </a>
       </div>
 
     </section>
