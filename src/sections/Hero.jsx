@@ -11,6 +11,7 @@ import { Target } from "../Components/Target"
 import ReactLogo from "../Components/ReactLogo"
 import Rings from "../Components/Rings"
 import Cube from "../Components/Cube"
+import { HeroCamera } from "../Components/HeroCamera"
 
 export const Hero = () => {
   // const controls = useControls('HackerRoom',
@@ -82,24 +83,26 @@ export const Hero = () => {
           <Suspense fallback={<CanvasLoader />}>
             <PerspectiveCamera makeDefault position={[0, 0, 20]} />
 
-            <HackerRoom
-              // position={[0, 0, 0]}
-              // rotation={[0, 280, 0]}
-              // scale={0.05}
-              // position={[2, -8, 2]}
-              // rotation={[0, -Math.PI, 0]}
-              // scale={[0.1, 0.1, 0.1]}
-              // scale={isMobile ? 0.07 : 0.1}
+            <HeroCamera isMobile={isMobile}>
+              <HackerRoom
+                // position={[0, 0, 0]}
+                // rotation={[0, 280, 0]}
+                // scale={0.05}
+                // position={[2, -8, 2]}
+                // rotation={[0, -Math.PI, 0]}
+                // scale={[0.1, 0.1, 0.1]}
+                // scale={isMobile ? 0.07 : 0.1}
 
-              position={sizes.deskPosition}
-              scale={sizes.deskScale}
-              rotation={[0, -Math.PI, 0]}
-            />
+                position={sizes.deskPosition}
+                scale={sizes.deskScale}
+                rotation={[0, -Math.PI, 0]}
+              />
+            </HeroCamera>
 
             <group>
               <Target position={sizes.targetPosition} />
               <ReactLogo position={sizes.reactLogoPosition} />
-              <Cube position={sizes.cubePosition}/>
+              <Cube position={sizes.cubePosition} />
               <Rings position={sizes.ringPosition} />
             </group>
 
