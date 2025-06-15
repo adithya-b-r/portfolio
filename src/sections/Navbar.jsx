@@ -6,13 +6,17 @@ const NavItems = ({ isMobile = false }) => {
   return (
     <ul className={`flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20 ${isMobile ? 'w-full' : ''}`}>
       {navLinks.map(({ id, name, href }) => (
-        <li key={id} className={`text-neutral-400 hover:text-white transition-colors ${
+        <li key={id} className={`transition-colors ${
           isMobile 
-            ? 'w-full rounded-md px-5 py-2 hover:bg-[#3A3A49] focus:bg-[#3A3A49] focus:text-white' 
-            : 'py-2'
+            ? 'w-full rounded-md px-5 py-2 text-neutral-400 active:bg-[#3A3A49] active:text-white touch-manipulation' 
+            : 'py-2 text-neutral-400 hover:text-white'
         }`}>
           <a href={href}
-            className="text-lg md:text-base hover:text-white transition-colors block"
+            className={`transition-colors block ${
+              isMobile 
+                ? 'text-lg active:text-white' 
+                : 'text-lg md:text-base hover:text-white'
+            }`}
             onClick={() => { }}>
             {name}
           </a>
