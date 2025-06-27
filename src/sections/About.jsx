@@ -1,6 +1,6 @@
 import Globe from "react-globe.gl"
 import { Button } from "../Components/Button"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 
 export const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
@@ -14,6 +14,25 @@ export const About = () => {
       setHasCopied(false);
     }, 3000);
   }
+
+  const globeRef = useRef();
+
+  useEffect(() => {
+    let animationFrameId;
+
+    const animate = () => {
+      if (globeRef.current) {
+        globeRef.current.controls().autoRotate = true;
+        globeRef.current.controls().autoRotateSpeed = 0.5;
+        globeRef.current.controls().update();
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
 
   return (
     <section className="sm:px-10 px-5 my-20" id="about">
@@ -42,6 +61,7 @@ export const About = () => {
           <div className="w-full h-full border-2 border-[#1C1C21] bg-black-200 rounded-lg sm:p-7 p-4 flex flex-col gap-5">
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
               <Globe
+              ref={globeRef}
                 height={326}
                 width={326}
                 backgroundColor="rgba(0, 0, 0, 0)"
@@ -52,7 +72,14 @@ export const About = () => {
                 // globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-night.jpg"
                 bumpImageUrl="//unpkg.com/three-globe/example/img/earth-topology.png"
-                labelsData={[{ lat: 15.3173, lng: 75.7139, text: "Karnataka, India", color: 'white', size: 20 }]}
+                labelsData={[
+                  {
+                    lat: 12.3173,
+                    lng: 75.7139,
+                    text: "Karnataka, India",
+                    color: 'white',
+                    size: 20
+                  }]}
               />
             </div>
             <div>
