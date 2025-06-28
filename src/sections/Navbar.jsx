@@ -4,7 +4,7 @@ import { navLinks } from "../constants"
 
 const NavItems = ({ isMobile = false }) => {
   return (
-    <ul className={`flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20 ${isMobile ? 'w-full' : ''}`}>
+    <ul className={`flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20 font-medium ${isMobile ? 'w-full' : ''}`}>
       {navLinks.map(({ id, name, href }) => (
         <li key={id} className={`transition-colors ${
           isMobile 

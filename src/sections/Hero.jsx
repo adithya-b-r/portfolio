@@ -67,7 +67,7 @@ export const Hero = () => {
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
   return (
-    <section className="min-h-screen w-full flex flex-col relative">
+    <section id="home" className="min-h-screen w-full flex flex-col relative">
       <div className="w-full mx-auto flex flex-col sm:mt-30 mt-20 gap-3">
         <p className="sm:text-3xl text-2xl font-semibold text-center text-gray-300">
           Hey, I am Adithya B R<span className="waving-hand">👋</span>
