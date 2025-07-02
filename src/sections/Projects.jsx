@@ -1,7 +1,22 @@
+import { useState } from "react";
 import { myProjects } from "../constants/index"
 
+const projectCount = myProjects.length;
+
 export const Projects = () => {
-  const currentProject = myProjects[0];
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const currentProject = myProjects[selectedProjectIndex];
+
+  const handleNav = (direction) => {
+    setSelectedProjectIndex((prevIndex) => {
+      if (direction == 'prev') {
+        return prevIndex == 0 ? projectCount - 1 : prevIndex - 1;
+      } else {
+        return prevIndex == projectCount - 1 ? 0 : prevIndex + 1;
+      }
+    }
+    )
+  }
 
   return (
     <section className="sm:px-10 px-5 my-20">
@@ -32,7 +47,24 @@ export const Projects = () => {
               ))}
             </div>
 
-            <a href=""></a>
+            <a className="flex items-center gap-2 cursor-pointer font-medium text-[#AFB0B6]" href={currentProject.href} target="_blank" rel="noreferrer">
+              <p>Check Live Site</p>
+              <img src="/assets/arrow-up.png" className="w-3 h-3" alt="arrow" />
+            </a>
+          </div>
+
+          <div className="flex justify-between items-center mt-7">
+            <button className="w-10 h-10 p-3 cursor-pointer active:scale-95 transition-all rounded-full arrow-gradient"
+              onClick={() => handleNav('prev')}
+            >
+              <img src="/assets/left-arrow.png" alt="left arrow" className="w-4 h-4" />
+            </button>
+
+            <button className="w-10 h-10 p-3 cursor-pointer active:scale-95 transition-all rounded-full arrow-gradient"
+              onClick={() => handleNav('next')}
+            >
+              <img src="/assets/right-arrow.png" alt="right arrow" className="w-4 h-4" />
+            </button>
           </div>
 
         </div>
