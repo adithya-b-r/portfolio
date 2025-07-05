@@ -24,7 +24,9 @@ export const Projects = () => {
 
   return (
     <section className="sm:px-10 px-5 my-20">
-      <p className="text-xl font-semibold mb-2 text-white">My Work</p>
+      {/* <p className="text-xl font-semibold mb-2 text-white">My Work</p> */}
+      <h3 className="sm:text-4xl text-3xl font-semibold text-gray_gradient">My Work</h3>
+      
 
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         <div className="flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-[#0E0E10]">
